@@ -1,4 +1,5 @@
 from mongoengine import Document, EmbeddedDocument, fields
+from Archivo.models import Archivo
 
 class Usuario(Document):
     nombre = fields.StringField()
@@ -10,8 +11,5 @@ class Usuario(Document):
     edad = fields.IntField()
     telefono = fields.StringField()
     celular = fields.StringField()
-
-
-# class Libro(Document):
-# 	nombre = fields.StringField()
-# 	autor = fields.ReferenceField(Autor, dbref=True)
+    archivo = fields.ListField(fields.ReferenceField(Archivo))
+    meta = {'allow_inheritance': True}

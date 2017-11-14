@@ -1,3 +1,5 @@
-from django.db import models
+from mongoengine import Document, EmbeddedDocument, fields
+from Usuario.models import Usuario
 
-# Create your models here.
+class Arrendatario(Usuario):
+    propietario = fields.BooleanField()

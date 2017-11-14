@@ -108,7 +108,10 @@ def login(request, user):
             request.session.flush()
     else:
         request.session.cycle_key()
-    request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
+    try:
+        request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
+    except Exception:
+        request.session[SESSION_KEY] = user.id
     request.session[BACKEND_SESSION_KEY] = user.backend
     request.session[HASH_SESSION_KEY] = session_auth_hash
     if hasattr(request, 'user'):

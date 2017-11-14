@@ -45,6 +45,11 @@ INSTALLED_APPS = [
     'mongoengine.django.mongo_auth',
 ]
 
+AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+MONGOENGINE_USER_DOCUMENT = 'mongoengine.django.auth.User'
+SESSION_ENGINE = 'mongoengine.django.sessions'
+SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,6 +61,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
@@ -98,14 +104,15 @@ WSGI_APPLICATION = 'ServiciosArriendo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.dummy',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
 MONGODB_DATABASES = {
     "default" : {
         "name": "arriendo",
+        "host": "127.0.0.1",
         "host": "127.0.0.1",
         "port": 27017,
         "tz_aware": True
@@ -157,6 +164,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'mongo_auth.MongoUser'
 
 AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_mongoengine.auth.MongoEngineBackend',
     'mongoengine.django.auth.MongoEngineBackend',
 )
 

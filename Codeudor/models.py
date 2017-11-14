@@ -1,3 +1,7 @@
-from django.db import models
+from mongoengine import Document, EmbeddedDocument, fields
+from Usuario.models import Usuario
 
-# Create your models here.
+class Codeudor(Usuario):
+    contrato = fields.BooleanField()
+    propiedadRaiz = fields.BooleanField()
+
