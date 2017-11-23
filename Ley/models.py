@@ -1,3 +1,7 @@
-from django.db import models
+from mongoengine import Document, EmbeddedDocument, fields
 
-# Create your models here.
+
+class Ley(Document):
+    descripcion = fields.StringField()
+    nombreley = fields.StringField()
+    referencialey = fields.StringField()

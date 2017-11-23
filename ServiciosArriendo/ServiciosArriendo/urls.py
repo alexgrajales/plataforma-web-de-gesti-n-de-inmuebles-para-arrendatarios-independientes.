@@ -18,22 +18,33 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
-# from Usuario.views import *
-# from Inmueble.views import *
-# from Codeudor.views import *
-# from Archivo.views import *
-# from Arrendatario.views import *
-# from Arrendador.views import *
-# from Administrador.views import *
+from Usuario.views import *
+from Inmueble.views import *
+from Codeudor.views import *
+from Archivo.views import *
+from Arrendatario.views import *
+from Arrendador.views import *
+from Administrador.views import *
+from ContratoLey.views import *
+from Contrato.views import *
+from Habitacion.views import *
+from Ley.views import *
+from Pago.views import *
+
 from rest_framework import routers, serializers, viewsets
 router = routers.DefaultRouter()
-# router.register(r'usuario', UsuarioViewSet, r'usuario')
-# router.register(r'arrendatario', ArrendatarioViewSet, r'arrendatario')
-# router.register(r'arrendador', ArrendadorViewSet, r'arrendador')
-# router.register(r'administrador', AdministradorViewSet, r'administrador')
-# router.register(r'inmueble', InmuebleViewSet, r'inmueble')
-# router.register(r'codeudor', CodeudorViewSet, r'codeudor')
-# router.register(r'archivo', ArchivoViewSet, r'archivo')
+router.register(r'usuario', UsuarioViewSet, r'usuario')
+router.register(r'arrendatario', ArrendatarioViewSet, r'arrendatario')
+router.register(r'arrendador', ArrendadorViewSet, r'arrendador')
+router.register(r'administrador', AdministradorViewSet, r'administrador')
+router.register(r'inmueble', InmuebleViewSet, r'inmueble')
+router.register(r'codeudor', CodeudorViewSet, r'codeudor')
+router.register(r'archivo', ArchivoViewSet, r'archivo')
+router.register(r'contrato', ContratoViewSet, r'contrato')
+router.register(r'contratoley', ContratoLeyViewSet, r'contratoley')
+router.register(r'habitacion', HabitacionViewSet, r'habitacion')
+router.register(r'ley', LeyViewSet, r'ley')
+router.register(r'pago', PagoViewSet, r'pago')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

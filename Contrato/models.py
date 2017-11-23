@@ -1,3 +1,11 @@
-from django.db import models
+from mongoengine import Document, EmbeddedDocument, fields
+from Arrendador.models import Arrendador
+from Arrendatario.models import Arrendatario
+from Archivo.models import Archivo
 
-# Create your models here.
+
+class Contrato(Document):
+    archivo = fields.ListField(fields.ReferenceField(Archivo))
+    fechainicio = fields.DateTimeField()
+    fechafin = fields.DateTimeField()
+    estado = fields.IntField()
