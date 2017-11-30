@@ -1,4 +1,42 @@
 <div ng-controller="UsuarioController">
+    <form>
+        <div class="ng-scope form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">correo</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" ng-model="correo">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">clave</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" ng-model="clave">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputAddress">direccion</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" ng-model="direccion">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputAddress">nombre</label>
+                <input type="text" class="form-control" id="inputName" placeholder="name" ng-model="nombre">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Apellido</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="name" ng-model="apellido">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Celular</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="name" ng-model="celular">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Telefono</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="name" ng-model="telefono">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Edad</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="name" ng-model="edad">
+            </div>
+            <button type="button" class="btn btn-success" ng-click="add(nombre, apellido, correo, clave, direccion, celular, telefono, edad)">Guardar</button>
+        </div>
+
+    </form>
     <div ng-hide="edit" ng-click="edit=true">
 
         <table ng-table class="table table-hover">
@@ -21,17 +59,29 @@
             </thead>
             <tbody>
                 <tr ng-repeat="list in data" class="list">
-                    <td>{{list.nombre}}</td>
-                    <td>{{list.apellido}}</td>
-                    <td>{{list.cedula}}</td>
-                    <td>{{list.clave}}</td>
-                    <td>{{list.correo}}</td>
-                    <td>{{list.direccion}}</td>
-                    <td>{{list.edad}}</td>
-                    <td>{{list.telefono}}</td>
-                    <td>{{list.celular}}</td>
-                    <td>{{list.archivo}}</td>
-                    <td><button type="button" class="btn btn-primary" ng-click="edit=true"> editar</button></td>
+                    <td ng-hide="edit"><div >{{list.nombre}}</td>
+                    <td ng-hide="edit">{{list.apellido}}</td>
+                    <td ng-hide="edit">{{list.cedula}}</td>
+                    <td ng-hide="edit">{{list.clave}}</td>
+                    <td ng-hide="edit">{{list.correo}}</td>
+                    <td ng-hide="edit">{{list.direccion}}</td>
+                    <td ng-hide="edit">{{list.edad}}</td>
+                    <td ng-hide="edit">{{list.telefono}}</td>
+                    <td ng-hide="edit">{{list.celular}}</td>
+                    <td ng-hide="edit">{{list.archivo}}</td>
+                    <td>
+                            <div class="card" ng-show="edit" ng-model-options="modelOptions">
+                                    <div class="flex">
+                                        <label><strong>Title:&nbsp;</strong></label>
+                                        <input type="text" ng-model="card.title" />
+                                    </div>
+                                    <textarea ng-model="card.description" placeholder="Enter description.."></textarea>
+                                    <button ng-click="edit=false">close</button>
+                                    <button ng-click="delete()">Delete Card</button>
+                                </div>
+
+                    </td>
+                    <td><button type="button" class="btn btn-primary" ng-click="edit=true" ng-change="update()"> editar</button></td>
                     <td><button type="button" class="btn btn-danger" ng-click="delete()">eliminar</button></td>
                     <td><button type="button" class="btn btn-info"> ver mas</button></td>
                 </tr>
@@ -39,56 +89,5 @@
         </table>
 
     </div>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">correo</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" ng-model="correo">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputPassword4">clave</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" ng-model="clave">
-            </div>
-            <div class="form-group col-md-12">
-                <label for="inputAddress">direccion</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" ng-model="direccion">
-            </div>
-            <div class="form-group col-md-12">
-                <label for="inputAddress">nombre</label>
-                <input type="text" class="form-control" id="inputName" placeholder="name" ng-model="nombre">
-            </div>
-            <div class="form-group col-md-12">
-                    <label for="inputAddress">Apellido</label>
-                    <input type="text" class="form-control" id="inputLastName" placeholder="name" ng-model="apellido">
-                </div>
-            <button ng-click="add(nombre, correo, clave, direccion)">+</button>
-        </div>
-        <!-- <input type="text" ng-model="nombre" />
-            <input type="text" ng-model="apellido" />
-            <input type="text" ng-model="cedula" />
-            <input type="text" ng-model="clave" />
-            <input type="text" ng-model="correo" />
-            <input type="text" ng-model="direccion" />
-            <input type="text" ng-model="edad" />
-            <input type="text" ng-model="telefono" />
-            <input type="text" ng-model="celular" />
-            <input type="text" ng-model="archivo" />             -->
 
-    </form>
 </div>
-
-
-<!-- <div class="card" ng-show="edit" ng-model-options="modelOptions">
-        <div class="flex">
-            <label><strong>Title:&nbsp;</strong></label>
-            <input type="text" ng-model="card.title" ng-change="update()" />
-            <input type="text" ng-model="card.title" ng-change="update()" />
-            <input type="text" ng-model="card.title" ng-change="update()" />
-            <input type="text" ng-model="card.title" ng-change="update()" />
-            <input type="text" ng-model="card.title" ng-change="update()" />
-            <input type="text" ng-model="card.title" ng-change="update()" />
-        </div>
-        <textarea ng-model="card.description" placeholder="Enter description.."></textarea>
-        <button ng-click="edit=false">close</button>
-        <button ng-click="delete()">Delete Card</button>
-    </div> -->
