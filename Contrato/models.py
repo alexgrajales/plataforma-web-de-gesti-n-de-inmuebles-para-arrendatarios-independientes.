@@ -9,3 +9,6 @@ class Contrato(Document):
     fechainicio = fields.DateTimeField()
     fechafin = fields.DateTimeField()
     estado = fields.IntField()
+
+    def __str__(self):
+        return self.archivo

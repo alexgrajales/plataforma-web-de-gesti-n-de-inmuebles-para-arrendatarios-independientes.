@@ -10,5 +10,9 @@ class Pago(Document):
     arrendatario = fields.ListField(fields.ReferenceField(Arrendatario))
     inmueble = fields.ListField(fields.ReferenceField(Inmueble))
     fecha = fields.DateTimeField()
+    descripcionpago = fields.StringField()
     descripcionaprobacion = fields.StringField()
     pagoaprobadoarrendador = fields.BooleanField()
+
+    def __str__(self):
+        return self.descripcionpago

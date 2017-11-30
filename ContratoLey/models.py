@@ -9,3 +9,6 @@ class ContratoLey(Document):
     ley = fields.ListField(fields.ReferenceField(Ley))
     archivo = fields.ListField(fields.ReferenceField(Archivo))
     detalle = fields.StringField()
+
+    def __str__(self):
+        return self.contrato

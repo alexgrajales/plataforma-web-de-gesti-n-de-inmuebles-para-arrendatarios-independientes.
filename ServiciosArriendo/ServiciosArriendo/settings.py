@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_mongoengine',
     'mongoengine.django.mongo_auth',
+    'Usuario'
 ]
 
 AUTH_USER_MODEL = 'mongo_auth.MongoUser'
@@ -194,5 +195,5 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 5
+    'PAGE_SIZE': 50
 }

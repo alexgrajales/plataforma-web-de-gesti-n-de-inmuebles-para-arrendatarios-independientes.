@@ -13,3 +13,6 @@ class Usuario(Document):
     celular = fields.StringField()
     archivo = fields.ListField(fields.ReferenceField(Archivo))
     meta = {'allow_inheritance': True}
+
+    def __str__(self):
+        return self.nombre+self.apellido

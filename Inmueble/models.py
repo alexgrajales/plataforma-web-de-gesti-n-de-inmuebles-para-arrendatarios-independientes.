@@ -23,3 +23,7 @@ class Inmueble(Document):
     salacomedor = fields.BooleanField()
     telefono = fields.StringField()
     tipo = fields.StringField()
+    nombre = fields.StringField()
+
+    def __str__(self):
+        return self.nombre
