@@ -50,6 +50,9 @@ router.register(r'pago', PagoViewSet, r'pago')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^usuarios/', TemplateView.as_view(template_name='verusuarios.html')),
+    url(r'^administrador/', TemplateView.as_view(template_name='veradministrador.html')),
+    url(r'^arrendador/', TemplateView.as_view(template_name='verarrendador.html')),
+    url(r'^administrador/', include('Administrador.urls')),
     url(r'^apiusuario/', include('Usuario.urls')),
     url(r'api/', include(router.urls, namespace='api')),
     # url(r'^$', index_view, {}, name="index"),

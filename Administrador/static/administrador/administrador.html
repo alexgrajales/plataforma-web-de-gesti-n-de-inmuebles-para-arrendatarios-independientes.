@@ -1,9 +1,9 @@
-<div ng-controller="UsuarioController">
+<div ng-controller="AdministradorController">
     <div>
 
         <div class="container" id="formulario">
-            <h1>Usuarios</h1>
-            <form>                
+            <h1>Administrador</h1>
+            <form>
                 <div class="ng-scope form-row">
                     <!-- <div class="form-group col-md-12">
                             <label for="inputEmail">id</label>
@@ -37,10 +37,17 @@
                         <label for="inputAddress">Telefono</label>
                         <input type="text" class="form-control" id="inputLastName" placeholder="name" ng-model="telefono" value="{{telefono}}">
                     </div>
-                    
 
-                    <button type="button" class="btn btn-success" ng-click="add(nombre, apellido, correo, clave, direccion, celular, telefono, edad)">Guardar</button>                    
-                    <button type="update" class="btn btn-success" ng-click="update(nombre, apellido, correo, clave, direccion, celular, telefono, edad)">actualizar</button>                    
+                    <div class="form-group col-md-12">
+                        <label for="inputAddress">Administrador</label>
+                        <span class="input-group-addon">
+                                
+                            <input type="checkbox" ng-model="superUsuario" aria-label="Checkbox for following text input">
+                          </span>
+                    </div>
+
+                    <button type="button" class="btn btn-success" ng-click="add(nombre, apellido, correo, clave, direccion, celular, telefono, edad)">Guardar</button>
+                    <button type="update" class="btn btn-success" ng-click="update(nombre, apellido, correo, clave, direccion, celular, telefono, edad)">actualizar</button>
                 </div>
 
             </form>
@@ -49,7 +56,7 @@
         <br>
         <br>
         <div ng-hide="edit">
-            <h1>Listado de Usuarios</h1>
+            <h1>Listado de Administrador</h1>
             <table ng-table class="table table-hover">
                 <thead>
                     <tr>
@@ -63,8 +70,9 @@
                         <th scope="col">telefono</th>
                         <th scope="col">celular</th>
                         <th scope="col">Archivo</th>
+                        <th scope="col">Super usuario</th>
                         <th></th>
-                        <th></th>                        
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +88,7 @@
                         <td ng-hide="edit">{{list.telefono}}</td>
                         <td ng-hide="edit">{{list.celular}}</td>
                         <td ng-hide="edit">{{list.archivo}}</td>
+                        <td ng-hide="edit"><input type="checkbox" ng-model="superUsuario" aria-label="Checkbox for following text input" onclick="return false;"></td>
                         <td>
                             <div class="card" ng-show="edit" ng-model-options="modelOptions">
                                 <div class="flex">
@@ -93,7 +102,7 @@
 
                         </td>
                         <td><button type="button" class="btn btn-primary" ng-click="cargar(list)"> editar</button></td>
-                        <td><button type="button" class="btn btn-danger" ng-click="delete(list)">eliminar</button></td>                        
+                        <td><button type="button" class="btn btn-danger" ng-click="delete(list)">eliminar</button></td>
                     </tr>
                 </tbody>
             </table>

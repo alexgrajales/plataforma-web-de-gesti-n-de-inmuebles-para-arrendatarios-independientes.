@@ -2,16 +2,15 @@
 (function () {
     'use strict';
     angular.module('usuario.demo')
-        .directive('usuarioUsuario', UsuarioDirective);
+        .directive('administradorAdministrador', UsuarioDirective);
 
     function UsuarioDirective() {
         return {
-            templateUrl: '/static/usuario/usuario.html',
-            templateCss: '/static/usuario/css/usuario.css',
+            templateUrl: '/static/administrador/administrador.html',
+            templateCss: '/static/administrador/css/administrador.css',
             restrict: 'E',
             controller: ['$scope', '$http', function ($scope, $http) {
-                // console.log($scope)        
-                // var url = '/apiusuario/usuario/'+$scope.usuario.id + '/';     
+                   
 
                 $scope.cargar = function (usuario) {
                     $scope.id = usuario.id;
@@ -24,34 +23,32 @@
                     $scope.telefono = usuario.telefono;
                     $scope.edad = usuario.edad;
                     $scope.clave = usuario.clave;
+                    $scope.superUsuario = usuario.superUsuario;
 
-                    var url = '/apiusuario/usuario/' + usuario.id + '/';
+                    var url = '/api/administrador/' + usuario.id + '/';
                     $http.put(url, usuario);
                 };
 
-                $scope.update = function (nombre, apellido, correo, clave, direccion, celular, telefono, edad, archivo) {
+                $scope.update = function (nombre, apellido, correo, clave, direccion, celular, telefono, edad, archivo, superUsuario) {
                     var usuario;
-                    console.log("update");
-                    console.log(telefono);
                     
-                    console.log($scope)
-
                     var usuario = {
                         id: $scope.id,
                         nombre: nombre, apellido:apellido, 
-                        correo: correo, clave:clave, direccion:direccion, celular:celular, telefono:telefono, edad:edad,archivo:archivo,
+                        correo: correo, clave:clave, direccion:direccion, celular:celular, telefono:telefono, 
+                        edad:edad,archivo:archivo, superUsuario:superUsuario
                     };
                     var usuarios = $scope.$root.$$childHead.data;
                     usuarios.splice(usuarios.indexOf(usuario), 1);
                     
                     console.log(usuario)
-                    var url = '/apiusuario/usuario/' + usuario.id + '/';
+                    var url = '/api/administrador/' + usuario.id + '/';
                     $http.put(url, usuario);
                 };
 
 
                 $scope.delete = function (usuario) {
-                    var url = '/apiusuario/usuario/' + usuario.id + '/';
+                    var url = '/api/administrador/' + usuario.id + '/';
                     $http.delete(url).then(
                         function () {
                             // console.log('hola')         

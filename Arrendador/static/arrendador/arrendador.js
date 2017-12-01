@@ -2,20 +2,22 @@
 (function () {
     'use strict';
     angular.module('usuario.demo', [])
-        .controller('UsuarioController', ['$scope', '$http', UsuarioController]);
+        .controller('ArrendadorController', ['$scope', '$http', UsuarioController]);
 
     function UsuarioController($scope, $http) {
         $scope.usuairo = null;
-        $scope.add = function (nombre, apellido, correo, clave, direccion, celular, telefono, edad, archivo) {
+        $scope.add = function (nombre, apellido, correo, clave, direccion, celular, telefono, edad, archivo, contratoLaboral) {
             
             var usuario = {
                 nombre: nombre, apellido:apellido, 
-                correo: correo, clave:clave, direccion:direccion, celular:celular, telefono:telefono, edad:edad,archivo:archivo,
+                correo: correo, clave:clave, direccion:direccion, celular:celular, telefono:telefono, 
+                edad:edad,archivo:archivo,
+                contratoLaboral:contratoLaboral,
             };
             $scope.usuairo = usuario;
             // console.log($scope.usuairo);
             // console.log($scope.data);
-            $http.post('/apiusuario/usuario/', usuario)
+            $http.post('/api/arrendador/', usuario)
             .then(function (response) {  
                 console.log('post')  
                 console.log($scope.$root.$$childHead.data);
@@ -31,9 +33,9 @@
         }
 
         $scope.data = [];
-        $http.get('/apiusuario/usuario/').then(function (response) {   
+        $http.get('/api/arrendador/').then(function (response) {
             //console.log();  
-            //console.log(response.data);
+            console.log(response.data);
             $scope.data = response.data.results;
         });                
     }
