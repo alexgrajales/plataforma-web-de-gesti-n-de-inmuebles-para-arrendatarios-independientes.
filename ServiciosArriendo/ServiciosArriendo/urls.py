@@ -49,7 +49,7 @@ router.register(r'pago', PagoViewSet, r'pago')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/', TemplateView.as_view(template_name='index.html')),
+    url(r'^$', TemplateView.as_view(template_name='index.html')),
     url(r'^vermas/', TemplateView.as_view(template_name='vermas.html')),
     url(r'^usuarios/', TemplateView.as_view(template_name='verusuarios.html')),
     url(r'^administrador/', TemplateView.as_view(template_name='veradministrador.html')),
